@@ -17,10 +17,6 @@ public class EmploymentEntity {
     @Column(name = "employment_id", nullable = false)
     private Long employment_id;
 
-    @ManyToOne
-    @JoinColumn(name = "borrower_id", nullable = false)
-    private BorrowerEntity borrowerEntity;
-
     @Column(name = "employer_name", nullable = false)
     private String employerName;
 
@@ -32,4 +28,9 @@ public class EmploymentEntity {
 
     @Column(name = "employment_duration", nullable = false)
     private EmploymentDuration employmentDuration;
+
+
+    @ManyToOne
+    @JoinColumn(name = "borrower_id", nullable = false)
+    private BorrowerEntity borrowerEntity;
 }

@@ -16,10 +16,6 @@ public class FinancialMetricsEntity {
     @Column(name = "financial_metrics_id", nullable = false)
     private Long financial_metrics_id;
 
-    @ManyToOne
-    @JoinColumn(name = "borrower_id", nullable = false)
-    private BorrowerEntity borrowerEntity;
-
     @Column(name = "debt_to_income_ratio", nullable = false)
     private Double debtToIncomeRatio;
 
@@ -28,4 +24,9 @@ public class FinancialMetricsEntity {
 
     @Column(name = "other_income", nullable = false)
     private Double otherIncome;
+
+
+    @ManyToOne
+    @JoinColumn(name = "borrower_id", nullable = false)
+    private BorrowerEntity borrowerEntity;
 }
