@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @ToString
 @Table(name="employment")
-public class Employment {
+public class EmploymentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Employment {
 
     @ManyToOne
     @JoinColumn(name = "borrower_id", nullable = false)
-    private Borrower borrower;
+    private BorrowerEntity borrowerEntity;
 
     @Column(name = "employer_name", nullable = false)
     private String employerName;

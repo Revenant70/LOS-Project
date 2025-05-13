@@ -10,7 +10,7 @@ import lombok.ToString;
 @Data
 @Table(name="property_details")
 @ToString
-public class PropertyDetails {
+public class PropertyDetailsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,6 @@ public class PropertyDetails {
 
     @ManyToOne
     @JoinColumn(name = "loan_id", nullable = false)
-    private LoanApplication loanApplication;
+    private LoanApplicationEntity loanApplicationEntity;
 
 }

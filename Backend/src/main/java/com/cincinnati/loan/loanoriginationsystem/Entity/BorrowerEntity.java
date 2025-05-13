@@ -10,7 +10,7 @@ import java.util.Set;
 @ToString
 @Table(name = "borrowers")
 @Entity
-public class Borrower {
+public class BorrowerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +36,12 @@ public class Borrower {
 
 
     @OneToMany(mappedBy = "borrower")
-    private Set<LoanApplication> loanApplications;
+    private Set<LoanApplicationEntity> loanApplicationEntities;
 
     @OneToMany(mappedBy = "borrower")
-    private Set<Employment> employments;
+    private Set<EmploymentEntity> employmentEntities;
 
     @OneToMany(mappedBy = "borrower")
-    private Set<FinancialMetrics> financialMetrics;
+    private Set<FinancialMetricsEntity> financialMetricEntities;
 
 }

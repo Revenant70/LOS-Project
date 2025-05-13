@@ -9,7 +9,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name="financial_metrics")
-public class FinancialMetrics {
+public class FinancialMetricsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class FinancialMetrics {
 
     @ManyToOne
     @JoinColumn(name = "borrower_id", nullable = false)
-    private Borrower borrower;
+    private BorrowerEntity borrowerEntity;
 
     @Column(name = "debt_to_income_ratio", nullable = false)
     private Double debtToIncomeRatio;

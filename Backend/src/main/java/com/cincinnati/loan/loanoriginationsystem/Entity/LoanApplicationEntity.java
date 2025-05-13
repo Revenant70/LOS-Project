@@ -11,7 +11,7 @@ import java.util.Set;
 @Data
 @ToString
 @Table(name="loan_applications")
-public class LoanApplication {
+public class LoanApplicationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,9 +41,9 @@ public class LoanApplication {
 
     @ManyToOne
     @JoinColumn(name = "borrower_id", nullable = false)
-    private Borrower borrower;
+    private BorrowerEntity borrowerEntity;
 
     @OneToMany(mappedBy = "loanApplication")
-    private Set<PropertyDetails> propertyDetails;
+    private Set<PropertyDetailsEntity> propertyDetailEntities;
 
 }
