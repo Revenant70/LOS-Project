@@ -1,16 +1,23 @@
 package com.cincinnati.loan.loanoriginationsystem.Entity;
 
+import com.cincinnati.loan.loanoriginationsystem.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Data
 @ToString
 @Table(name = "borrowers")
 @Entity
-public class BorrowerEntity {
+public class BorrowerEntity implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,13 +42,52 @@ public class BorrowerEntity {
     private String borrowerPassword;
 
 
-    @OneToMany(mappedBy = "borrower")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return borrowerPassword;
+    }
+
+    @Override
+    public String getUsername() {
+        return borrowerEmail;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+
+    @OneToMany(mappedBy = "borrowerEntity")
     private Set<LoanApplicationEntity> loanApplicationEntities;
 
-    @OneToMany(mappedBy = "borrower")
+    @OneToMany(mappedBy = "borrowerEntity")
     private Set<EmploymentEntity> employmentEntities;
 
-    @OneToMany(mappedBy = "borrower")
+    @OneToMany(mappedBy = "borrowerEntity")
     private Set<FinancialMetricsEntity> financialMetricEntities;
 
 }

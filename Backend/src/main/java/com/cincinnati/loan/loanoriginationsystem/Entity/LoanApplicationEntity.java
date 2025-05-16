@@ -2,9 +2,12 @@ package com.cincinnati.loan.loanoriginationsystem.Entity;
 
 import com.cincinnati.loan.loanoriginationsystem.enums.Loantype;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -20,11 +23,13 @@ public class LoanApplicationEntity {
     @Column(name = "loan_type")
     private Loantype loanType;
 
-    @Column(name = "loan_duration", nullable = false, precision = 2, scale = 0)
+    @Min(1)
+    @Max(60)
+    @Column(name = "loan_duration", nullable = false)
     private Integer loanDuration;
 
     @Column(name = "loan_amount", nullable = false, precision = 19, scale = 2)
-    private Double loanAmount;
+    private BigDecimal loanAmount;
 
     @Column(name = "loan_purpose", nullable = false)
     private String loanPurpose;
@@ -43,7 +48,7 @@ public class LoanApplicationEntity {
     @JoinColumn(name = "borrower_id", nullable = false)
     private BorrowerEntity borrowerEntity;
 
-    @OneToMany(mappedBy = "loanApplication")
+    @OneToMany(mappedBy = "loanApplicationEntity")
     private Set<PropertyDetailsEntity> propertyDetailEntities;
 
 }
