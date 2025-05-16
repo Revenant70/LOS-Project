@@ -7,6 +7,7 @@ target/
 ### Docker ###
 
 docker-compose.yaml
+.env
 
 ### STS ###
 .apt_generated
