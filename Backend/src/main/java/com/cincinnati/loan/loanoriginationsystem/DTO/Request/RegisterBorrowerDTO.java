@@ -1,13 +1,14 @@
 package com.cincinnati.loan.loanoriginationsystem.DTO.Request;
 
-import jakarta.validation.Valid;
+import com.cincinnati.loan.loanoriginationsystem.enums.Role;
 
-public record CreateBorrowerDTO (
+public record RegisterBorrowerDTO(
         String borrowerName,
         String borrowerEmail,
         String borrowerPhoneNumber,
         String borrowerDOB,
         String borrowerSSN,
-        String borrowerPassword
+        String borrowerPassword,
+        Role role
 )
 {}

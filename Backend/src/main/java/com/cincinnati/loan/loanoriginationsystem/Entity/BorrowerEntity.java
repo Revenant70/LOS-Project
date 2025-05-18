@@ -2,6 +2,7 @@ package com.cincinnati.loan.loanoriginationsystem.Entity;
 
 import com.cincinnati.loan.loanoriginationsystem.enums.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.ToString;
 
@@ -27,12 +28,13 @@ public class BorrowerEntity implements UserDetails{
     private String borrowerName;
 
     @Column(name = "borrower_dob", nullable = false)
-    private String borrowerDob;
+    private String borrowerDOB;
 
     @Column(name = "borrower_ssn", nullable = false)
-    private String borrowerSsn;
+    private String borrowerSSN;
 
-    @Column(name = "borrower_phone_number")
+    @Pattern(regexp = "^(\\+1-)?\\d{3}-\\d{3}-\\d{4}$|^\\d{10}$|^\\d{8}$")
+    @Column(name = "borrower_phone_number", length = 15)
     private String borrowerPhoneNumber;
 
     @Column(name = "borrower_email", nullable = false, unique = true)
