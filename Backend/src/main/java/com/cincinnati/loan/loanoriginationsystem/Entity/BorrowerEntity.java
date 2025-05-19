@@ -1,6 +1,6 @@
 package com.cincinnati.loan.loanoriginationsystem.Entity;
 
-import com.cincinnati.loan.loanoriginationsystem.enums.Role;
+import com.cincinnati.loan.loanoriginationsystem.Enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.cincinnati.loan.loanoriginationsystem.DTO.Request;
 
-import com.cincinnati.loan.loanoriginationsystem.enums.Role;
+import com.cincinnati.loan.loanoriginationsystem.Enums.Role;
 
 public record RegisterBorrowerDTO(
         String borrowerName,

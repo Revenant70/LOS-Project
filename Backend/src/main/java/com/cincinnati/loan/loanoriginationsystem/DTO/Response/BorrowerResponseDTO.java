@@ -1,8 +1,10 @@
 package com.cincinnati.loan.loanoriginationsystem.DTO.Response;
 
+import com.cincinnati.loan.loanoriginationsystem.Enums.Role;
+
 public record BorrowerResponseDTO(
-        String borrowerUsername,
+        String borrowerEmail,
         String borrowerPhoneNumber,
-        String borrowerEmail
+        Role role
 ) {
 }

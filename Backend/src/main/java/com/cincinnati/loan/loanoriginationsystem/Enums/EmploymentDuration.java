@@ -1,4 +1,4 @@
-package com.cincinnati.loan.loanoriginationsystem.enums;
+package com.cincinnati.loan.loanoriginationsystem.Enums;
 
 public enum EmploymentDuration {
     less_than_one_year,

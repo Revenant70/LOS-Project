@@ -1,6 +1,6 @@
 package com.cincinnati.loan.loanoriginationsystem.Entity;
 
-import com.cincinnati.loan.loanoriginationsystem.enums.Loantype;
+import com.cincinnati.loan.loanoriginationsystem.Enums.Loantype;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

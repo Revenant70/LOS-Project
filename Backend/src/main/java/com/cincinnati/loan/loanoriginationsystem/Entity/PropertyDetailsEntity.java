@@ -1,7 +1,7 @@
 package com.cincinnati.loan.loanoriginationsystem.Entity;
 
 
-import com.cincinnati.loan.loanoriginationsystem.enums.PropertyType;
+import com.cincinnati.loan.loanoriginationsystem.Enums.PropertyType;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;

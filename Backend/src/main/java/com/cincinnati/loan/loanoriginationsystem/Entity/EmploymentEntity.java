@@ -1,6 +1,6 @@
 package com.cincinnati.loan.loanoriginationsystem.Entity;
 
-import com.cincinnati.loan.loanoriginationsystem.enums.EmploymentDuration;
+import com.cincinnati.loan.loanoriginationsystem.Enums.EmploymentDuration;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
