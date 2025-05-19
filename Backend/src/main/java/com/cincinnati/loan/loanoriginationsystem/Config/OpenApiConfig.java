@@ -11,8 +11,8 @@ public class OpenApiConfig {
     public OpenAPI apiInfo() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Auto Detailing API")
-                        .description("API for managing bookings and services")
+                        .title("LOS Program API")
+                        .description("API for managing user data and loan applications")
                         .version("v1.0"));
     }
 }

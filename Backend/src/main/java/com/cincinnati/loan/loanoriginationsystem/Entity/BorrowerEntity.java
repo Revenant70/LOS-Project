@@ -1,5 +1,6 @@
 package com.cincinnati.loan.loanoriginationsystem.Entity;
 
+import com.cincinnati.loan.loanoriginationsystem.Config.SSNEncryptorConfig;
 import com.cincinnati.loan.loanoriginationsystem.Enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
@@ -30,6 +31,7 @@ public class BorrowerEntity implements UserDetails{
     @Column(name = "borrower_dob", nullable = false)
     private String borrowerDOB;
 
+    @Convert(converter = SSNEncryptorConfig.class)
     @Column(name = "borrower_ssn", nullable = false)
     private String borrowerSSN;
 
