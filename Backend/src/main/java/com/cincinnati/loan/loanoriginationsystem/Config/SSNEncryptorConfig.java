@@ -14,16 +14,14 @@ public class SSNEncryptorConfig implements AttributeConverter<String, String> {
 
     public SSNEncryptorConfig() {
         String FIELD_SECRET = System.getenv("FIELD_SECRET");
-        String FIELD_SECRET_SALT = System.getenv("FIELD_SECRET_SALT");
+        String FIELD_SECRET_SALT = KeyGenerators.string().generateKey();
 
         if(FIELD_SECRET == null || FIELD_SECRET_SALT == null) {
-            throw new IllegalStateException("Field secret or field secret salt is null");
+            throw new IllegalStateException("Field secret");
         }
 
         this.textEncryptor = Encryptors.text(FIELD_SECRET, FIELD_SECRET_SALT);
     }
-
-    String salt = KeyGenerators.string().generateKey();
 
     @Override
     public String convertToDatabaseColumn(String plainText) {

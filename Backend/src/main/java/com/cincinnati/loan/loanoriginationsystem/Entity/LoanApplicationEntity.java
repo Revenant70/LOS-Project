@@ -4,13 +4,13 @@ import com.cincinnati.loan.loanoriginationsystem.Enums.InterestRateType;
 import com.cincinnati.loan.loanoriginationsystem.Enums.LoanTerm;
 import com.cincinnati.loan.loanoriginationsystem.Enums.Loantype;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import lombok.Data;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -21,6 +21,12 @@ public class LoanApplicationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loan_id;
+
+    @Column(name = "application_id", nullable = false, unique = true, updatable = false)
+    private String applicationId;
+
+    @Column(name = "submission_date")
+    private LocalDate submissionDate;
 
     @Column(name = "loan_type")
     private Loantype loanType;
@@ -42,6 +48,10 @@ public class LoanApplicationEntity {
 
     @Column(name = "loan_status", nullable = false)
     private String loanStatus;
+
+    public LoanApplicationEntity() {
+        this.applicationId = UUID.randomUUID().toString();
+    }
 
 
     @ManyToOne

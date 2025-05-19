@@ -21,7 +21,7 @@ public class SecurityConfig {
                 http
                         .csrf(AbstractHttpConfigurer::disable)
                         .authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/api/v0/account", "/api/v0/account/**").permitAll()
+                                .requestMatchers("/api/v0/account", "/api/v0/account/**", "/api/v0/loan/**").permitAll()
                                 .anyRequest().authenticated()
                         )
                         .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
