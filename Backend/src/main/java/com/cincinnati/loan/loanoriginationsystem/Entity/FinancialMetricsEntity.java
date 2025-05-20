@@ -26,7 +26,7 @@ public class FinancialMetricsEntity {
     private Double otherIncome;
 
 
-    @ManyToOne
-    @JoinColumn(name = "borrower_id", nullable = false)
-    private BorrowerEntity borrowerEntity;
+    @OneToOne
+    @JoinColumn(name = "loan_application_id", nullable = false)
+    private LoanApplicationEntity loanApplicationEntity;
 }

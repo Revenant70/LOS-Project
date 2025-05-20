@@ -1,8 +1,8 @@
 package com.cincinnati.loan.loanoriginationsystem.Controller;
 
-import com.cincinnati.loan.loanoriginationsystem.DTO.Request.Account.LoginBorrowerDTO;
-import com.cincinnati.loan.loanoriginationsystem.DTO.Request.Account.RegisterBorrowerDTO;
-import com.cincinnati.loan.loanoriginationsystem.DTO.Response.BorrowerResponseDTO;
+import com.cincinnati.loan.loanoriginationsystem.DTO.Request.Account.LoginBorrowerRequestDTO;
+import com.cincinnati.loan.loanoriginationsystem.DTO.Request.Account.RegisterBorrowerRequestDTO;
+import com.cincinnati.loan.loanoriginationsystem.DTO.Response.Borrower.BorrowerResponseDTO;
 import com.cincinnati.loan.loanoriginationsystem.Entity.BorrowerEntity;
 import com.cincinnati.loan.loanoriginationsystem.Enums.Role;
 import com.cincinnati.loan.loanoriginationsystem.Exceptions.UserAlreadyExistsException;
@@ -29,8 +29,8 @@ public class AccountController {
     private final JWTService jwtService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerBorrower(@Valid @RequestBody RegisterBorrowerDTO registerBorrowerDTO) {
-        BorrowerEntity borrower = borrowerMapper.registerDTOToEntity(registerBorrowerDTO);
+    public ResponseEntity<?> registerBorrower(@Valid @RequestBody RegisterBorrowerRequestDTO registerBorrowerRequestDTO) {
+        BorrowerEntity borrower = borrowerMapper.registerDTOToEntity(registerBorrowerRequestDTO);
         borrower.setRole(Role.USER);
         try {
             accountService.createAccount(borrower);
@@ -45,10 +45,10 @@ public class AccountController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginBorrower(@Valid @RequestBody LoginBorrowerDTO loginBorrowerDTO) {
+    public ResponseEntity<?> loginBorrower(@Valid @RequestBody LoginBorrowerRequestDTO loginBorrowerRequestDTO) {
         BorrowerEntity borrower = new BorrowerEntity();
-        borrower.setBorrowerEmail(loginBorrowerDTO.borrowerEmail());
-        borrower.setBorrowerPassword(loginBorrowerDTO.borrowerPassword());
+        borrower.setBorrowerEmail(loginBorrowerRequestDTO.borrowerEmail());
+        borrower.setBorrowerPassword(loginBorrowerRequestDTO.borrowerPassword());
 
         try {
             BorrowerEntity authenticatedBorrower = accountService.loginAccount(borrower);

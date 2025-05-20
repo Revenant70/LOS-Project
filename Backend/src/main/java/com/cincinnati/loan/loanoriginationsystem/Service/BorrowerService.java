@@ -14,7 +14,7 @@ public class BorrowerService {
     private final BorrowerRepository borrowerRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public void createBorrowerBaseline(BorrowerEntity borrower) {
+    public BorrowerEntity createBorrowerBaseline(BorrowerEntity borrower) {
         if(borrower == null) {
             throw new IllegalArgumentException("Borrower cannot be null");
         }
@@ -26,6 +26,8 @@ public class BorrowerService {
             dbBorrower.setBorrowerSSN(borrower.getBorrowerSSN());
             dbBorrower.setBorrowerPhoneNumber(borrower.getBorrowerPhoneNumber());
             dbBorrower.setRole(Role.USER);
+            borrowerRepository.save(dbBorrower);
+            return dbBorrower;
         }
         else {
             borrower.setBorrowerPassword(passwordEncoder.encode(borrower.getBorrowerPassword()));
@@ -41,9 +43,10 @@ public class BorrowerService {
             if(borrower.getBorrowerSSN() == null) {
                 throw new IllegalArgumentException("Borrower's SSN cannot be null");
             }
+            borrowerRepository.save(borrower);
+            return borrower;
         }
 
-        borrowerRepository.save(borrower);
 
     }
 

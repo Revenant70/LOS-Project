@@ -29,9 +29,9 @@ public class PropertyDetailsEntity {
     @Column(name = "property_appraised_value", nullable = false)
     private Double propertyAppraisedValue;
 
-
-    @ManyToOne
-    @JoinColumn(name = "loan_id", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "loan_application_id", nullable = false)
     private LoanApplicationEntity loanApplicationEntity;
+
 
 }

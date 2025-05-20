@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -88,12 +88,6 @@ public class BorrowerEntity implements UserDetails{
 
 
     @OneToMany(mappedBy = "borrowerEntity")
-    private Set<LoanApplicationEntity> loanApplicationEntities;
-
-    @OneToMany(mappedBy = "borrowerEntity")
-    private Set<EmploymentEntity> employmentEntities;
-
-    @OneToMany(mappedBy = "borrowerEntity")
-    private Set<FinancialMetricsEntity> financialMetricEntities;
+    private Set<LoanApplicationEntity> loanApplicationEntities = new HashSet<>();;
 
 }
